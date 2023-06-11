@@ -6,6 +6,7 @@ import org.junit.jupiter.api.BeforeEach;
 import pages.todoist.LoginSection;
 import pages.todoist.MainPage;
 import pages.todoist.MenuSection;
+import pages.todoist.ProjectModalSection;
 import singletonSession.Session;
 
 import java.lang.reflect.Array;
@@ -19,6 +20,8 @@ public class TestBase {
     protected MainPage mainPage= new MainPage();
     protected LoginSection loginSection = new LoginSection();
     protected MenuSection menuSection = new MenuSection();
+
+    protected ProjectModalSection projectModalSection= new ProjectModalSection();
 
     static List<String> browser= new ArrayList<>();
 
