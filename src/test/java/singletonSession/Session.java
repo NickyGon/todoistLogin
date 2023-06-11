@@ -7,15 +7,15 @@ public class Session {
 
     private static Session session = null;
     private WebDriver browser;
-    private Session(){
-        browser = FactoryBrowser.make("firefox").create();
+    private Session(String browser){
+        this.browser = FactoryBrowser.make(browser).create();
         //browser = FactoryBrowser.make("chrome").create();
         //browser = FactoryBrowser.make("edge").create();
     }
 
-    public static Session getSession(){
+    public static Session getSession(String browName){
         if (session==null){
-            session=new Session();
+            session=new Session(browName);
         }
         return session;
     }

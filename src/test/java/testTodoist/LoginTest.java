@@ -9,6 +9,8 @@ import singletonSession.Session;
 import utils.Properties;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.time.Duration;
 
@@ -17,10 +19,9 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfEl
 
 public class LoginTest extends TestBase{
 
-
-
-    @Test
-    public void verifyLoginSuccess() throws InterruptedException {
+    @ParameterizedTest
+    @CsvSource({ "chrome", "edge","firefox" })
+    public void verifyLoginSuccess(String browser) throws InterruptedException {
 
         mainPage.loginButton.click();
 
@@ -35,7 +36,7 @@ public class LoginTest extends TestBase{
             menuSection.profile.click();
         } catch (Exception e){
             System.out.println("Caught not clickable button");
-            WebDriverWait wait= new WebDriverWait(Session.getSession().getBrowser(), Duration.ofSeconds(3));
+            WebDriverWait wait= new WebDriverWait(Session.getSession(browser).getBrowser(), Duration.ofSeconds(5));
             wait.until(ExpectedConditions.and(elementToBeClickable(By.id(":r2:")),invisibilityOfElementLocated(By.xpath("//div[contains(@class,'loading_screen')]"))));
             menuSection.profile.click();
         }
@@ -43,7 +44,6 @@ public class LoginTest extends TestBase{
 
         Assertions.assertTrue(menuSection.emaillabel.isControlDisplayed(),
                 "ERROR!! login was not successfully, review credentials");
-
     }
 
 

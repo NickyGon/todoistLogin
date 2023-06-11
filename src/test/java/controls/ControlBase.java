@@ -11,9 +11,10 @@ public class ControlBase {
     public ControlBase (By locator){
         this.locator=locator;
     }
+    private String browser;
 
     protected void findControl(){
-        this.control = Session.getSession().getBrowser().findElement(locator);
+        this.control = Session.getSession(this.browser).getBrowser().findElement(locator);
     }
 
     public void click(){
@@ -39,5 +40,9 @@ public class ControlBase {
     public String getTextByAttribute(String attr){
         this.findControl();
         return this.control.getAttribute(attr);
+    }
+
+    public void setMyBrowser(String browser){
+        this.browser=browser;
     }
 }
