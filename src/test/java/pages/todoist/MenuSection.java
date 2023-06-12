@@ -24,6 +24,9 @@ public class MenuSection {
 
     public Button deleteProjectOption=new Button(By.xpath("//div[contains(@class,'popper')]//li//div[text()=\"Eliminar proyecto\"]"));
 
+    public Button addItemOption=new Button(By.xpath("//div[contains(@class,\"project_view\")]//div//ul//button[contains(@class,\"plus_add\")]"));
+
+
 
     public void setEmail(String host) {
         emaillabel = new Label(By.xpath("//div[contains(@style,'--popover')]//div//p[text()='"+host+"']"));

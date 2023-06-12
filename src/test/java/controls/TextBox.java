@@ -24,4 +24,19 @@ public class TextBox extends ControlBase{
         this.control.clear();
         this.control.sendKeys(text+ Keys.ENTER);
     }
+
+    //Para el texto en P
+    public void setTextP(String text, String xpath){
+        this.findControl();
+        this.control.clear();
+        this.locator=new By.ByXPath(xpath);
+        this.findControl();
+        this.control.sendKeys(text);
+    }
+
+
+
+
+
+
 }

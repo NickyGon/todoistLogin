@@ -3,16 +3,11 @@ package testTodoist;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import pages.todoist.LoginSection;
-import pages.todoist.MainPage;
-import pages.todoist.MenuSection;
-import pages.todoist.ProjectModalSection;
+import pages.todoist.*;
 import singletonSession.Session;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 
 public class TestBase {
@@ -22,6 +17,8 @@ public class TestBase {
     protected MenuSection menuSection = new MenuSection();
 
     protected ProjectModalSection projectModalSection= new ProjectModalSection();
+
+    protected ItemSection itemSection = new ItemSection();
 
     static List<String> browser= new ArrayList<>();
 
