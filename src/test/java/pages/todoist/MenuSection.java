@@ -20,9 +20,9 @@ public class MenuSection {
 
     public Button newProjectOptions=new Button(By.xpath("(//div//a[contains(@aria-label,'"+projectName+"')]//following-sibling::span[@data-project-actions]//button)[last()]"));
 
-    public Button editProjectOption=new Button(By.xpath("//div[contains(@class,'popper')]//li//div[text()=\"Editar proyecto\"]"));
+    public Button editProjectOption=new Button(By.xpath("//div[contains(@class,'popper')]//li//div[text()=\"Edit project\"]"));
 
-    public Button deleteProjectOption=new Button(By.xpath("//div[contains(@class,'popper')]//li//div[text()=\"Eliminar proyecto\"]"));
+    public Button deleteProjectOption=new Button(By.xpath("//div[contains(@class,'popper')]//li//div[text()=\"Delete project\"]"));
 
 
     public void setEmail(String host) {

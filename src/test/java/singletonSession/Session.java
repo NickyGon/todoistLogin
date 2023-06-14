@@ -9,8 +9,6 @@ public class Session {
     private WebDriver browser;
     private Session(String browser){
         this.browser = FactoryBrowser.make(browser).create();
-        //browser = FactoryBrowser.make("chrome").create();
-        //browser = FactoryBrowser.make("edge").create();
     }
 
     public static Session getSession(String browName){

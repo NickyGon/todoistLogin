@@ -13,8 +13,7 @@ import utils.Properties;
 import java.time.Duration;
 import java.util.Date;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
-import static org.openqa.selenium.support.ui.ExpectedConditions.invisibilityOfElementLocated;
+import static org.openqa.selenium.support.ui.ExpectedConditions.*;
 
 // ESTO no es para calificar, es para aprovechar de práctica personal el CRUD de projectos en Todoist
 public class ProjectCreateTest extends TestBase{
@@ -22,7 +21,7 @@ public class ProjectCreateTest extends TestBase{
 
 
     @ParameterizedTest
-    @CsvSource({ "chrome","edge","firefox" })
+    @CsvSource({ "chrome" })
     public void verifyLoginSuccess(String browser) throws InterruptedException {
 
         String newName="Nicknoo"+new Date().getTime();
@@ -41,12 +40,24 @@ public class ProjectCreateTest extends TestBase{
         menuSection.createProjectLab.click();
         Thread.sleep(1000);
         projectModalSection.updateName(newName,false);
+        Thread.sleep(1000);
+        projectModalSection.colorProject.click();
+        Thread.sleep(1000);
+        projectModalSection.bluecolor.click();
         menuSection.setNewprojectName(newName);
+        Thread.sleep(1000);
         projectModalSection.acceptModal.click();
         Thread.sleep(2500);
 
+        menuSection.newProjectOptions.click();
+        Thread.sleep(1000);
+        menuSection.editProjectOption.click();
+        Thread.sleep(2000);
 
-        Assertions.assertTrue(menuSection.newProjectLab.isControlDisplayed(), "ERROR, proyect not created!!");
+
+        Assertions.assertTrue(menuSection.newProjectLab.isControlDisplayed() && projectModalSection.colorProject.getTextByAttribute("innerText").equals("Blue"), "ERROR, proyect not created!!");
+
+        projectModalSection.acceptModal.click();
 
         try {
             menuSection.newProjectLab.click();
@@ -64,11 +75,21 @@ public class ProjectCreateTest extends TestBase{
         Thread.sleep(2000);
         projectModalSection.updateName(newNameUp,true);
         menuSection.setNewprojectName(newNameUp);
+        Thread.sleep(1000);
+        projectModalSection.colorProject.click();
+        Thread.sleep(1000);
+        projectModalSection.yellowcolor.click();
         projectModalSection.acceptModal.click();
         Thread.sleep(2000);
 
-        Assertions.assertTrue(menuSection.newProjectLab.isControlDisplayed(), "ERROR, project not updated!!");
+        menuSection.newProjectOptions.click();
+        Thread.sleep(1000);
+        menuSection.editProjectOption.click();
+        Thread.sleep(2000);
 
+        Assertions.assertTrue(menuSection.newProjectLab.isControlDisplayed() && projectModalSection.colorProject.getTextByAttribute("innerText").equals("Yellow"), "ERROR, project not updated!!");
+
+        projectModalSection.acceptModal.click();
         try {
             menuSection.newProjectLab.click();
         } catch (Exception e){

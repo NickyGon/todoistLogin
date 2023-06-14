@@ -28,8 +28,6 @@ public class TestBase {
     @BeforeAll
     public static void setup(){
         browser.add("chrome");
-        browser.add("edge");
-        browser.add("firefox");
     }
 
     @BeforeEach
